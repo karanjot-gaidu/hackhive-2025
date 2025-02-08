@@ -14,11 +14,13 @@ export default function NavBar() {
 
             {/* Navigation Links */}
             <ul className="flex items-center gap-6 text-white text-sm">
-            <li><Link href="/" className="hover:underline">Home</Link></li>
-            <li><Link href="/courses" className="hover:underline">Courses</Link></li>
-            <li><Link href="/practice" className="hover:underline">Practice</Link></li>
-            <li><Link href="/about" className="hover:underline">About</Link></li>
-            <li><Link href="/contact" className="hover:underline">Contact</Link></li>
+            <li><Link href="/" className="hover:underline hover:scale-120 transition-all duration-300">Home</Link></li>
+            <li><Link href="/courses" className="hover:underline hover:scale-120 transition-all duration-300">Courses</Link></li>
+
+            <li><Link href="/practice" className="hover:underline hover:scale-120 transition-all duration-300">Practice</Link></li>
+            <li><Link href="/about" className="hover:underline hover:scale-120 transition-all duration-300">About</Link></li>
+            <li><Link href="/profile" className="hover:underline hover:scale-120 transition-all duration-300">Profile</Link></li>
+
             </ul>
 
             {/* Search Bar */}

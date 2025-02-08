@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { useEffect, useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 const SolarSystemModel = () => {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -14,6 +13,7 @@ const SolarSystemModel = () => {
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current?.appendChild(renderer.domElement);
+    // renderer.setClearColor(0x000000, 0); // Transparent background
 
     // ✅ Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
@@ -23,32 +23,46 @@ const SolarSystemModel = () => {
     directionalLight.position.set(5, 10, 7);
     scene.add(directionalLight);
 
-    // ✅ Load GLB Model (Only one model)
+    // ✅ Load GLB Models
     const loader = new GLTFLoader();
+
+    // Load Sun Model
     loader.load("/models/sun.glb", (gltf) => {
-      const model = gltf.scene;
-      model.position.set(0, 0, 0);
-      model.scale.set(1, 1, 1);
-      scene.add(model);
+      const sunModel = gltf.scene;
+      sunModel.position.set(0, 2, 0);
+      sunModel.scale.set(5, 5, 5);
+      scene.add(sunModel);
+      console.log("Sun model loaded");
+
+      // Rotate the sun
+      const rotateSun = () => {
+        sunModel.rotation.y += 0.01; // Adjust rotation speed here
+      };
+
+      // ✅ Animation loop
+      const animate = () => {
+        requestAnimationFrame(animate);
+        rotateSun();
+        renderer.render(scene, camera);
+      };
+      animate();
     });
 
     // ✅ Camera position
-    camera.position.set(0, 2, 5);
+    camera.position.set(0, 2, 20); // Zoomed out to see the sun
 
-    // ✅ Orbit Controls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-
-    // ✅ Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
+    // Handle window resize
+    const onWindowResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
-    animate();
+
+    window.addEventListener("resize", onWindowResize);
 
     return () => {
       mountRef.current?.removeChild(renderer.domElement);
+      window.removeEventListener("resize", onWindowResize);
     };
   }, []);
 
