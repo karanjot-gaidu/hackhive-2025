@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 const chapters = [
-  { title: "Mars", href: "/courses/planets/solar-system/mars" },
+  { title: "Mars", href: "/courses/planets/mars" },
   { title: "Venus", href: "/courses/planets/solar-system/venus" },
   { title: "Jupiter", href: "/courses/planets/solar-system/jupiter" },
   { title: "Saturn", href: "/courses/planets/solar-system/saturn" },
@@ -13,7 +13,7 @@ const chapters = [
 
 export default function Sidebar() {
   return (
-    <div className="w-64 bg-gray-900 text-white p-4">
+    <div className="w-64  text-white p-4">
       <h2 className="text-xl font-bold mb-4">Chapters</h2>
       <nav className="space-y-2">
         {chapters.map((chapter, index) => (
