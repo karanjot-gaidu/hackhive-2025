@@ -1,10 +1,13 @@
-// app/courses/planets/solar-system/mars/page.tsx
-import { Card } from '../../../../ui/card';
+// app/courses/Planets/Mars/page.tsx
+import { Card } from '../../../ui/card';
+import Sidebar from '../solar-system/sidebar';
 export default function MarsPage() {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen  background-image absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/space.jpg')" }}>
+      <Sidebar/>
       {/* Planet Information Side */}
       <div className="flex-1 p-6">
+
         <div className="relative">
           <img 
             src="/mars.jpg" 
@@ -12,6 +15,7 @@ export default function MarsPage() {
             className="w-full rounded-lg"
           />
           <div className="absolute top-4 left-4 bg-black/70 text-white p-4 rounded">
+
             <h2 className="text-2xl font-bold mb-2">Mars</h2>
             <p>Planet</p>
             <div className="space-y-1 mt-4">
