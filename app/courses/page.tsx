@@ -17,13 +17,13 @@ const CourseCard = ({
     <p className="text-gray-600">{description}</p>
     <div className="space-y-2">
       {links.map((link, index) => (
-        <a
+        <Link
           key={index}
           href={link.href}
           className="block w-full text-center py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
         >
           {link.text}
-        </a>
+        </Link>
       ))}
     </div>
   </Card>
