@@ -5,7 +5,7 @@ export async function GET(
     request: Request,
     { params }: { params: { planet: string } }
 ) {
-    const planet = params.planet;
+    const { planet } = await params;
 
     if (!planet) {
         return new Response('Planet parameter is required', { status: 400 });

@@ -3,7 +3,8 @@ import {
     createUserCourses, 
     getUserCourses, 
     markCourseCompleted, 
-    getCompletedCoursesWithData 
+    getCompletedCoursesWithData,
+    checkIfCourseCompleted
 } from '@/app/db';
 
 export async function POST(request: Request) {
@@ -29,19 +30,49 @@ export async function GET(request: Request) {
     try {
         const { searchParams } = new URL(request.url);
         const user_id = searchParams.get('user_id');
+        const course_id = searchParams.get('course_id');
 
         if (!user_id) {
             return new Response('User ID is required', { status: 400 });
         }
 
-        const courses = await getUserCourses(user_id);
-        return new Response(JSON.stringify(courses), {
-            status: 200,
+        // If course_id is provided, check completion status
+        if (course_id) {
+            try {
+                const isCompleted = await checkIfCourseCompleted(user_id, parseInt(course_id));
+                return new Response(JSON.stringify({ isCompleted }), {
+                    status: 200,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            } catch (err) {
+                console.error('Error checking course completion:', err);
+                return new Response(JSON.stringify({ error: 'Failed to check course completion' }), {
+                    status: 500,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+        }
+
+        // Get all courses
+        try {
+            const courses = await getUserCourses(user_id);
+            return new Response(JSON.stringify(courses), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        } catch (err) {
+            console.error('Error fetching user courses:', err);
+            return new Response(JSON.stringify({ error: 'Failed to fetch user courses' }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+    } catch (error) {
+        console.error('Error in GET route:', error);
+        return new Response(JSON.stringify({ error: 'Internal server error' }), {
+            status: 500,
             headers: { 'Content-Type': 'application/json' }
         });
-    } catch (error) {
-        console.error('Error fetching user courses:', error);
-        return new Response('Error fetching user courses', { status: 500 });
     }
 }
 

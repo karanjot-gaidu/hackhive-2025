@@ -3,8 +3,9 @@ import { Card } from '../../ui/card';
 import { useState } from 'react';
 import PlanetInfo from '../../components/planet-info';
 import Sidebar from "./solar-system/sidebar";
+import { useUser } from '@clerk/nextjs';
 
-const planets = ["Mars", "Venus", "Earth", "Jupiter", "Saturn", "Uranus", "Neptune"];
+const planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
 
 export default function PlanetsPage() {
   const [selectedPlanet, setSelectedPlanet] = useState(planets[0]); // Default to Mars
@@ -12,6 +13,7 @@ export default function PlanetsPage() {
   const handlePlanetSelect = (planet: string) => {
     setSelectedPlanet(planet);
   };
+  const { user } = useUser();
 
   return (
     <div className="fixed inset-0 flex">
@@ -27,6 +29,7 @@ export default function PlanetsPage() {
       {/* Sidebar - Fixed */}
       <div className="w-1/4 h-full fixed left-0">
         <Sidebar 
+          userId={user?.id || ''}
           selectedPlanet={selectedPlanet} 
           onPlanetSelect={handlePlanetSelect}
         />
