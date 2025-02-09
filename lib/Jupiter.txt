@@ -1,6 +1,6 @@
-Chapter 3: JUPITER
-1.1 Physical Properties and Orbital Dynamics
-1.1.1 Basic Physical Properties
+Chapter 5: JUPITER
+5.1 Physical Properties and Orbital Dynamics
+5.1.1 Basic Physical Properties
 Mass: 1.8982 × 10²⁷ kg
 Volume: 1.4313 × 10¹⁵ km³
 Equatorial radius: 71,492 km
@@ -9,7 +9,7 @@ Surface gravity: 24.79 m/s²
 Escape velocity: 59.5 km/s
 Moment of inertia factor: 0.254
 Surface pressure: Not applicable (gas giant)
-1.1.2 Orbital Characteristics
+5.1.2 Orbital Characteristics
 Semi-major axis: 778,570,000 km
 Orbital period: 4,332.59 days
 Average orbital speed: 13.07 km/s
@@ -17,41 +17,41 @@ Mean anomaly: 20.020°
 Orbital inclination: 1.303°
 Longitude of ascending node: 100.464°
 Argument of perihelion: 273.867°
-1.2 Atmospheric Science
-1.2.1 Composition
+5.2 Atmospheric Science
+5.2.1 Composition
 Hydrogen (H₂): 89.8%
 Helium (He): 10.2%
 Methane (CH₄): 0.3%
 Ammonia (NH₃): 0.026%
 Hydrogen deuteride (HD): 0.003%
 Ethane (C₂H₆): 0.0006%
-1.2.2 Atmospheric Structure
+5.2.2 Atmospheric Structure
 Troposphere (0-50 km): Clouds, bands, Great Red Spot
 Stratosphere (50-320 km): Temperature inversions
 Thermosphere (320-1000 km): Aurora activity
 Exosphere (>1000 km): Transition to space
-1.3 Surface Features
-1.3.1 Major Features
+5.3 Surface Features
+5.3.1 Major Features
 Great Red Spot: Persistent storm system (ongoing for centuries)
 Bands and Zones: Distinctive atmospheric patterns
 Polar Auroras: Intense magnetic field interactions
 Impact Basins: Temporary dark spots from impact events
-1.3.2 Impact Features
+5.3.2 Impact Features
 Crater distribution in atmospheric patterns
 Evidence of past impact events (Shoemaker-Levy 9)
-1.4 Internal Structure
-1.4.1 Core
+5.4 Internal Structure
+5.4.1 Core
 Radius: ~7,000 km
 State: Rocky/Metallic
 Magnetic field: Strongest in solar system
 Thickness: ~7,000 km
 Composition: Iron and silicates
-1.4.2 Mantle
+5.4.2 Mantle
 State: Liquid metallic
 Magnetic field: Strong convection currents
 Thickness: ~40,000 km
 Composition: Metallic hydrogen
-1.4.3 Outer Layer
+5.4.3 Outer Layer
 State: Fluid transitioning to gas
 Magnetic field: Complex interactions
 Thickness: ~20,000 km
