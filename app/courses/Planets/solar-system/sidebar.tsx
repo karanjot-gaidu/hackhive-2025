@@ -1,9 +1,11 @@
 const chapters = [
-  { title: "Mars" },
+  
+  { title: "Mercury" },
   { title: "Venus"  },
+  { title: "Earth" },
+  { title: "Mars" },
   { title: "Jupiter" },
   { title: "Saturn" },
-  { title: "Mercury" },
   { title: "Uranus"  },
   { title: "Neptune" },
 ];

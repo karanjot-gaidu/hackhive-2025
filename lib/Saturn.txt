@@ -1,0 +1,58 @@
+Chapter 6: SATURN
+6.1 Physical Properties and Orbital Dynamics
+6.1.1 Basic Physical Properties
+Mass: 5.6834 × 10²⁶ kg
+Volume: 8.2713 × 10¹⁴ km³
+Equatorial radius: 60,268 km
+Polar radius: 54,364 km
+Surface gravity: 10.44 m/s²
+Escape velocity: 35.5 km/s
+Moment of inertia factor: 0.210
+Surface pressure: Not applicable (gas giant)
+6.1.2 Orbital Characteristics
+Semi-major axis: 1,433,530,000 km
+Orbital period: 10,759.22 days
+Average orbital speed: 9.68 km/s
+Mean anomaly: 317.020°
+Orbital inclination: 2.485°
+Longitude of ascending node: 113.665°
+Argument of perihelion: 339.392°
+6.2 Atmospheric Science
+6.2.1 Composition
+Hydrogen (H₂): 96.3%
+Helium (He): 3.25%
+Methane (CH₄): 0.45%
+Ammonia (NH₃): 0.0125%
+Ethane (C₂H₆): 0.0007%
+Phosphine (PH₃): 0.0001%
+6.2.2 Atmospheric Structure
+Troposphere (0-60 km): Cloud layers, storm systems
+Stratosphere (60-270 km): Temperature inversions
+Thermosphere (270-1000 km): Aurora activity
+Exosphere (>1000 km): Gradual transition to space
+6.3 Surface Features
+6.3.1 Major Terrain Types
+Ring System: Most prominent in solar system
+Hexagonal Storm: Unique polar storm pattern
+Storm Bands: Atmospheric circulation patterns
+Impact Basins: Ring system disturbances
+6.3.2 Impact Features
+Crater distribution in ring system
+Evidence of atmospheric impact traces
+6.4 Internal Structure
+6.4.1 Core
+Radius: ~9,000 km
+State: Rocky/Metallic
+Magnetic field: Strong, highly symmetric
+Thickness: ~9,000 km
+Composition: Iron, nickel, rock
+6.4.2 Mantle
+State: Liquid metallic
+Magnetic field: Strong convection
+Thickness: ~30,000 km
+Composition: Metallic hydrogen
+6.4.3 Crust
+State: Fluid transitioning to gas
+Magnetic field: Complex field lines
+Thickness: ~21,000 km
+Composition: Molecular hydrogen and helium

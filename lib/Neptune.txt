@@ -1,6 +1,6 @@
-Chapter 7: NEPTUNE
-1.1 Physical Properties and Orbital Dynamics
-1.1.1 Basic Physical Properties
+Chapter 8: NEPTUNE
+8.1 Physical Properties and Orbital Dynamics
+8.1.1 Basic Physical Properties
 Mass: 1.02413 × 10²⁶ kg
 Volume: 6.254 × 10¹³ km³
 Equatorial radius: 24,764 km
@@ -9,7 +9,7 @@ Surface gravity: 11.15 m/s²
 Escape velocity: 23.5 km/s
 Moment of inertia factor: 0.236
 Surface pressure: Not applicable (ice giant)
-1.1.2 Orbital Characteristics
+8.1.2 Orbital Characteristics
 Semi-major axis: 4,495,060,000 km
 Orbital period: 60,182 days
 Average orbital speed: 5.43 km/s
@@ -17,41 +17,41 @@ Mean anomaly: 256.228°
 Orbital inclination: 1.769°
 Longitude of ascending node: 131.722°
 Argument of perihelion: 276.336°
-1.2 Atmospheric Science
-1.2.1 Composition
+8.2 Atmospheric Science
+8.2.1 Composition
 Hydrogen (H₂): 80%
 Helium (He): 19%
 Methane (CH₄): 1.5%
 Hydrogen deuteride (HD): 0.019%
 Ethane (C₂H₆): trace
 Water (H₂O): trace
-1.2.2 Atmospheric Structure
+8.2.2 Atmospheric Structure
 Troposphere (0-50 km): Methane clouds
 Stratosphere (50-5000 km): Temperature inversions
 Thermosphere (5000-50000 km): Aurora activity
 Exosphere (>50000 km): Gradual transition to space
-1.3 Surface Features
-1.3.1 Major Terrain Types
+8.3 Surface Features
+8.3.1 Major Terrain Types
 Great Dark Spot: Variable storm system
 Small Dark Spot: Secondary storm system
 Cloud Bands: Dynamic atmospheric patterns
 Impact Basins: Ring arc disturbances
-1.3.2 Impact Features
+8.3.2 Impact Features
 Crater distribution in ring system
 Evidence of atmospheric storms
-1.4 Internal Structure
-1.4.1 Core
+8.4 Internal Structure
+8.4.1 Core
 Radius: ~5,400 km
 State: Rocky/Icy
 Magnetic field: Tilted 47° from rotation axis
 Thickness: ~5,400 km
 Composition: Rock and ice
-1.4.2 Mantle
+8.4.2 Mantle
 State: Superionic
 Magnetic field: Complex structure
 Thickness: ~15,000 km
 Composition: Ionic water, ammonia, methane
-1.4.3 Crust
+8.4.3 Crust
 State: Gas transitioning to fluid
 Magnetic field: Irregular patterns
 Thickness: ~4,300 km
