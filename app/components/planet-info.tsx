@@ -7,52 +7,73 @@ interface PlanetInfoProps {
 
 export default function PlanetInfo({ planet, className = "" }: PlanetInfoProps) {
     const [planetInfo, setPlanetInfo] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        // Simulated planet information for Venus
-        const getVenusInfo = () => {
-            if (planet.toLowerCase() === 'venus') {
-                return `Venus is the second planet from the Sun and Earth's closest planetary neighbor.
-Similar in structure and size to Earth, Venus spins slowly in the opposite direction.
-Venus has a thick atmosphere that traps heat in a runaway greenhouse effect.
-The average temperature on Venus is 462°C (864°F).
-Key Features:
-1Surface is mostly covered in volcanic features
-2Has a toxic atmosphere of carbon dioxide and sulfuric acid clouds
-3Named after the Roman goddess of love and beauty
-4Often called Earth's "sister planet"`;
+        const loadPlanetInfo = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                const response = await fetch(`/api/planets/${planet.toLowerCase()}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to load information for ${planet}`);
+                }
+                const text = await response.text();
+                setPlanetInfo(text);
+            } catch (error) {
+                console.error('Error loading planet information:', error);
+                setError(`Unable to load information for ${planet}`);
+            } finally {
+                setIsLoading(false);
             }
-            return "Please select Venus to see information";
         };
-
-        setPlanetInfo(getVenusInfo());
+        loadPlanetInfo();
     }, [planet]);
+
+    const formattedText = (text: string) => {
+        return text.split('\n').map((line: string, index: number) => {
+            if (line.startsWith("Chapter")) {
+                return <h2 key={index} className="text-3xl font-bold mt-6">{line}</h2>;
+            } else if (/^\d+\.\d+\.\d+/.test(line)) {
+                return <h4 key={index} className="text-lg font-semibold mt-4">{line}</h4>;
+            } else if (/^\d+\.\d+/.test(line)) {
+                return <h3 key={index} className="text-xl font-bold mt-5">{line}</h3>;
+            } else if (line.includes(":")) {
+                const [title, value] = line.split(":");
+                return (
+                    <p key={index} className="ml-4">
+                        <span className="font-semibold">{title.trim()}:</span> {value.trim()}
+                    </p>
+                );
+            } else {
+                return <p key={index} className="ml-4">{line}</p>;
+            }
+        });
+    };
 
     return (
         <div className={`p-6 ${className}`}>
             <div className="relative">
                 <img
-                    src={planet.toLowerCase() === 'venus' ? '/planets/venus.jpg' : '/api/placeholder/400/300'}
+                    src={`/planets/${planet.toLowerCase()}.jpg`}
                     alt={planet}
                     className="w-full rounded-lg"
+                    onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/api/placeholder/400/300';
+                    }}
                 />
                 <div className="absolute top-4 left-4 bg-black/70 text-white p-4 rounded">
                     <h2 className="text-2xl font-bold mb-2">{planet}</h2>
-                    <p>Planet</p>
                     <div className="mt-4 text-sm">
-                        {planetInfo.split('\n').map((line: string, index: number) => {
-                            const indentMatch = line.match(/^\d+/);
-                            const indentLevel = indentMatch ? Math.min(indentMatch[0].length * 4, 16) : 0;
-                            
-                            return (
-                                <p 
-                                    key={index}
-                                    className={`pl-${indentLevel}`}
-                                >
-                                    {line}
-                                </p>
-                            );
-                        })}
+                        {isLoading ? (
+                            <p>Loading planet information...</p>
+                        ) : error ? (
+                            <p className="text-red-400">{error}</p>
+                        ) : (
+                            formattedText(planetInfo)
+                        )}
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link'; // Add this import
+import Link from 'next/link';
 import { Card } from '../ui/card';
 import NavBar from '../components/nav-bar';
 
@@ -17,13 +17,13 @@ const CourseCard = ({
     <p className="text-gray-300">{description}</p>
     <div className="space-y-2">
       {links.map((link, index) => (
-        <a
+        <Link
           key={index}
           href={link.href}
           className="block w-full text-center py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
         >
           {link.text}
-        </a>
+        </Link>
       ))}
     </div>
   </Card>
@@ -35,13 +35,13 @@ export default function CoursesPage() {
       title: "Planets",
       description: "Explore the fascinating world of planets in our solar system and beyond. Learn about their characteristics, formations, and unique features.",
       links: [
-        { text: "Start", href: "/courses/planets/" },
+        { text: "Start", href: "/courses/planets" },
         { text: "Resume", href: "/courses/planets/basics" },
         { text: "Start-From-Scratch", href: "/courses/planets/interactive" }
       ]
     },
     {
-      title: "Stars and Galaxies",
+      title: "Stars and Galaxies", 
       description: "Dive into the cosmic realm of stars and galaxies. Understand stellar evolution, galaxy types, and the vast cosmic web.",
       links: [
         { text: "Star Life Cycles", href: "/courses/stars/lifecycle" },
@@ -66,14 +66,15 @@ export default function CoursesPage() {
           Space Science Courses
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hover:scale-105 transition-all duration-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, index) => (
-            <CourseCard
-              key={index}
-              title={course.title}
-              description={course.description}
-              links={course.links}
-            />
+            <div key={index} className="hover:scale-105 transition-all duration-300">
+              <CourseCard
+                title={course.title}
+                description={course.description}
+                links={course.links}
+              />
+            </div>
           ))}
         </div>
       </div>
