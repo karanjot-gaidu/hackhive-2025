@@ -4,6 +4,8 @@ import { useState } from 'react';
 import PlanetInfo from '../../components/planet-info';
 import Sidebar from "./solar-system/sidebar";
 import { useUser } from '@clerk/nextjs';
+import AiChat from '@/app/components/ai-chat';
+import NavBar from '@/app/components/nav-bar';
 
 const planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
 
@@ -17,6 +19,7 @@ export default function PlanetsPage() {
 
   return (
     <div className="fixed inset-0 flex">
+      <NavBar />
       {/* Background with fixed position */}
       <div 
         className="fixed inset-0 bg-cover bg-center -z-10" 
@@ -27,40 +30,24 @@ export default function PlanetsPage() {
       />
 
       {/* Sidebar - Fixed */}
-      <div className="w-1/4 h-full fixed left-0">
+      <div className="w-1/4 h-full fixed left-0 pt-16">
         <Sidebar 
           userId={user?.id || ''}
           selectedPlanet={selectedPlanet} 
           onPlanetSelect={handlePlanetSelect}
+
         />
       </div>
 
       {/* Planet Information Side - Scrollable */}
-      <div className="flex-1 h-screen overflow-y-auto ml-[18%] p-4">
+      <div className="flex-1 h-screen overflow-y-auto ml-[18%] p-4 pt-16">
         <PlanetInfo planet={selectedPlanet} />
       </div>
+        <div className="w-1/3 h-full fixed right-0 p-4 pt-16">
 
-      {/* AI Chat - Fixed */}
-      <div className="w-1/3 h-full fixed right-0 border-l border-gray-200 p-4">
-        <Card className="h-full flex flex-col">
-          <div className="p-4 border-b">
-            <h3 className="text-xl font-bold">AI Chat</h3>
-            <p className="text-sm text-gray-600">
-              Ask questions about {selectedPlanet} and get instant answers
-            </p>
-          </div>
-          <div className="flex-1 overflow-auto p-4">
-            {/* Chat messages will go here */}
-          </div>
-          <div className="p-4 border-t">
-            <input
-              type="text"
-              placeholder="Type your question..."
-              className="w-full p-2 border rounded"
-            />
-          </div>
-        </Card>
-      </div>
+          <AiChat selectedPlanet={selectedPlanet} />
+        </div>
     </div>
+
   );
 }

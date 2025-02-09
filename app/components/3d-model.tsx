@@ -48,6 +48,47 @@ const SolarSystemModel = () => {
       animate();
     });
 
+    // Load Mercury Model
+    loader.load("/models/mercury.glb", (gltf) => {
+      const mercuryModel = gltf.scene;
+      mercuryModel.position.set(10, 2, 0);
+      mercuryModel.scale.set(0.5, 0.5, 0.5);
+      scene.add(mercuryModel);
+
+      const rotateMercury = () => {
+        mercuryModel.rotation.y += 0.01;
+      };
+
+      const animate = () => {
+        requestAnimationFrame(animate);
+        rotateMercury();
+        renderer.render(scene, camera);
+      };
+      animate();
+
+    });
+
+    loader.load("/models/venus.glb", (gltf) => {
+      const venusModel = gltf.scene;
+      venusModel.position.set(15, 2, 0);
+      venusModel.scale.set(0.55, 0.55, 0.55);
+      scene.add(venusModel);
+
+      const rotateVenus = () => {
+        venusModel.rotation.y += 0.01;
+      };
+
+
+      const animate = () => {
+        requestAnimationFrame(animate);
+        rotateVenus();
+        renderer.render(scene, camera);
+      };
+      animate();
+
+
+    });
+
     // ✅ Camera position
     camera.position.set(0, 2, 20); // Zoomed out to see the sun
 
