@@ -2,19 +2,19 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
 const planets = [
-  { name: "Mercury", image: "/images/mercury.png" },
-  { name: "Venus", image: "/images/venus.png" },
-  { name: "Earth", image: "/images/earth.png" },
-  { name: "Mars", image: "/images/mars.png" },
-  { name: "Jupiter", image: "/images/jupiter.png" },
-  { name: "Saturn", image: "/images/saturn.png" },
-  { name: "Uranus", image: "/images/uranus.png" },
-  { name: "Neptune", image: "/images/neptune.png" },
-  { name: "Sun", image: "/images/sun.png" },
-  { name: "Moon", image: "/images/moon.png" }
+  { name: "Mercury", image: "/images/mercury.jpg" },
+  { name: "Venus", image: "/images/venus.jpg" },
+  { name: "Earth", image: "/images/earth.jpg" },
+  { name: "Mars", image: "/images/mars.jpg" },
+  { name: "Jupiter", image: "/images/jupiter.jpg" },
+  { name: "Saturn", image: "/images/saturn.jpg" },
+  { name: "Uranus", image: "/images/uranus.jpg" },
+  { name: "Neptune", image: "/images/neptune.jpg" },
+  { name: "Sun", image: "/images/sun.jpg" },
+  { name: "Moon", image: "/images/moon.jpg" }
 ];
 
-const Search = () => {
+const Search = ({setSelectedPlanet }: {setSelectedPlanet: (planet: string | null) => void }) => {
   const [query, setQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [filteredPlanets, setFilteredPlanets] = useState(planets);
@@ -24,9 +24,11 @@ const Search = () => {
     const foundPlanet = planets.find(planet => planet.name.toLowerCase() === query.toLowerCase());
     if (foundPlanet) {
       setSelectedItem(foundPlanet.name);
+      setSelectedPlanet(foundPlanet.name); // Open model viewer on search
     } else {
       setSelectedItem("Not a valid selection");
     }
+
     setQuery("");
   };
 
@@ -40,6 +42,11 @@ const Search = () => {
       setFilteredPlanets(planets);
     }
   };
+
+  const handlePlanetClick = (planet: { name: string }) => {
+    setSelectedPlanet(planet.name);
+  };
+
 
   return (
     <div className="flex flex-col items-center">
@@ -59,18 +66,15 @@ const Search = () => {
       {query && (
         <div className="mt-2 w-64 bg-gray-800 rounded-md shadow-lg">
           {filteredPlanets.map((planet) => (
-            <div key={planet.name} className="flex items-center p-2 hover:bg-gray-700 cursor-pointer">
+            <div 
+              key={planet.name} 
+              className="flex items-center p-2 hover:bg-gray-700 cursor-pointer"
+              onClick={() => handlePlanetClick(planet)} // Open model viewer on planet click
+            >
               <img src={planet.image} alt={planet.name} className="w-8 h-8 mr-2" />
               <span className="text-white">{planet.name}</span>
             </div>
           ))}
-        </div>
-      )}
-
-      {selectedItem && (
-        <div className="mt-4 text-white">
-          You selected: {selectedItem}
-          {/* Here you can add the model-viewer component to display the selected item */}
         </div>
       )}
     </div>
