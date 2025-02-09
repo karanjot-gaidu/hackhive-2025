@@ -47,7 +47,7 @@ export const getGroqChatCompletion = async (message: string) => {
     ],
 
     // The language model which will generate the completion.
-    model: "deepseek-r1-distill-llama-70b",
+    model: "llama-3.3-70b-versatile",
 
     //
     // Optional parameters
