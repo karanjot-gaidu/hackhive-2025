@@ -1,0 +1,53 @@
+Chapter 1: MARS
+1.1 Physical Properties and Orbital Dynamics
+1.1.1 Basic Physical Properties
+Mass: 6.4171 × 10²³ kg
+Volume: 1.6318 × 10¹¹ km³
+Equatorial radius: 3,389.5 km
+Polar radius: 3,376.2 km
+Surface gravity: 3.71 m/s²
+Escape velocity: 5.03 km/s
+Moment of inertia factor: 0.366
+Surface pressure: ~0.636 kPa
+1.1.2 Orbital Characteristics
+Semi-major axis: 227,939,200 km
+Orbital period: 686.98 days
+Average orbital speed: 24.077 km/s
+Mean anomaly: 19.412°
+Orbital inclination: 1.850°
+Longitude of ascending node: 49.558°
+Argument of perihelion: 286.502°
+1.2 Atmospheric Science
+1.2.1 Composition
+Carbon dioxide (CO₂): 95.3%
+Nitrogen (N₂): 2.7%
+Argon (Ar): 1.6%
+Oxygen (O₂): 0.13%
+Carbon monoxide (CO): 0.08%
+Water vapor (H₂O): 0.03%
+1.2.2 Atmospheric Structure
+Troposphere (0-40 km): Thin and dynamic, major dust storms
+Mesosphere (40-100 km): Temperature inversions, CO₂ condensation
+Thermosphere (100-200 km): Aurorae, ionization effects
+Exosphere (>200 km): Gradual transition to space
+1.3 Surface Features
+1.3.1 Major Terrain Types
+Volcanic Plateaus: Olympus Mons (largest volcano in the Solar System)
+Canyons: Valles Marineris (spans over 4,000 km)
+Plains: Vastitas Borealis (lowland region, possible ancient ocean bed)
+Impact Basins: Hellas Planitia (largest impact structure on Mars)
+1.3.2 Impact Features
+Crater distribution linked to Mars’ geological history
+Evidence of ancient water activity in some craters
+1.4 Internal Structure
+1.4.1 Core
+Radius: ~1,800 km
+State: Partially liquid
+Composition: Iron, sulfur, nickel
+Magnetic field: Weak, localized remnants
+1.4.2 Mantle
+Thickness: ~1,700 km
+Composition: Silicate rock, convection-driven
+1.4.3 Crust
+Thickness: 20-50 km
+Composition: Basaltic, signs of past tectonic activity

@@ -1,31 +1,29 @@
+"use client"
 import { Card } from '../../ui/card';
-
+import { useState } from 'react';
+import PlanetInfo from '../../components/planet-info';
 import Sidebar from "./solar-system/sidebar";
 
+const planets = ["Mars", "Venus", "Earth", "Jupiter", "Saturn", "Uranus", "Neptune"];
+
 export default function PlanetsPage() {
-    return (
-            <div className="flex h-screen background-image absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/space.jpg')" }}>
-      <Sidebar/>
+  const [selectedPlanet, setSelectedPlanet] = useState(planets[0]); // Default to Mars
+
+  const handlePlanetSelect = (planet: string) => {
+    setSelectedPlanet(planet);
+  };
+
+  return (
+    <div className="flex h-screen background-image absolute inset-0 bg-cover bg-center" 
+         style={{ backgroundImage: "url('/space.jpg')" }}>
+      <Sidebar 
+        selectedPlanet={selectedPlanet} 
+        onPlanetSelect={handlePlanetSelect}
+      />
+      
       {/* Planet Information Side */}
-      <div className="flex-1 p-6">
-        <div className="relative">
-          <img 
-            src="/mars.jpg" 
-            alt="Mars" 
-            className="w-full rounded-lg"
-          />
-          <div className="absolute top-4 left-4 bg-black/70 text-white p-4 rounded">
-            <h2 className="text-2xl font-bold mb-2">Mars</h2>
-            <p>Planet</p>
-            <div className="space-y-1 mt-4">
-              <p>Distance from Sun: 227.9 million km</p>
-              <p>Orbital period: 687 days</p>
-              <p>Length of day: 1d 0h 37m</p>
-              <p>Gravity: 3.73 m/s²</p>
-              <p>Radius: 3,389.5 km</p>
-            </div>
-          </div>
-        </div>
+      <div className="flex-1">
+        <PlanetInfo planet={selectedPlanet} />
       </div>
 
       {/* AI Chat Side */}
@@ -34,7 +32,7 @@ export default function PlanetsPage() {
           <div className="p-4 border-b">
             <h3 className="text-xl font-bold">AI Chat</h3>
             <p className="text-sm text-gray-600">
-              Ask questions about Mars and get instant answers
+              Ask questions about {selectedPlanet} and get instant answers
             </p>
           </div>
           <div className="flex-1 overflow-auto p-4">
@@ -50,6 +48,5 @@ export default function PlanetsPage() {
         </Card>
       </div>
     </div>
-    )
+  );
 }
-

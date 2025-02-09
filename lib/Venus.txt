@@ -1,0 +1,99 @@
+Chapter 2: VENUS
+2.1 Physical Properties and Orbital Dynamics
+2.1.1 Basic Physical Properties
+
+Mass: 4.8675 × 10^24 kg
+Volume: 9.2843 × 10^11 km³
+Equatorial radius: 6,051.8 km
+Polar radius: 6,051.8 km
+Surface gravity: 8.87 m/s²
+Escape velocity: 10.36 km/s
+Moment of inertia factor: 0.33
+Surface pressure: 92 bar
+
+2.1.2 Orbital Characteristics
+
+Semi-major axis: 108,208,000 km
+Orbital period: 224.701 days
+Average orbital speed: 35.02 km/s
+Mean anomaly: 50.115°
+Orbital inclination: 3.39458°
+Longitude of ascending node: 76.680°
+Argument of perihelion: 54.884°
+
+2.2 Atmospheric Science
+2.2.1 Composition
+
+Carbon dioxide (CO₂): 96.5%
+Nitrogen (N₂): 3.5%
+Sulfur dioxide (SO₂): 150 ppm
+Argon (Ar): 70 ppm
+Water vapor (H₂O): 20 ppm
+Carbon monoxide (CO): 17 ppm
+Helium (He): 12 ppm
+Neon (Ne): 7 ppm
+
+2.2.2 Atmospheric Structure
+
+Troposphere (0-65 km)
+Temperature gradient: 737K to 230K
+Pressure: 92 bar to 0.1 bar
+Sulfuric acid clouds
+Super-rotation phenomenon
+
+Mesosphere (65-120 km)
+Temperature patterns
+Chemical processes
+Global circulation
+Day-night variations
+
+Thermosphere (120-220 km)
+Ionization processes
+Solar wind interactions
+Atmospheric escape
+Magnetic field interactions
+
+2.3 Surface Features
+2.3.1 Major Terrain Types
+
+Volcanic Plains
+Coverage: 80% of surface
+Composition: Basaltic rock
+Age: 300-600 million years
+Formation processes
+
+Highland Regions
+Ishtar Terra
+Maxwell Montes (highest point)
+Aphrodite Terra
+Alpha Regio
+
+2.3.2 Impact Features
+
+Craters
+Size distribution
+Preservation state
+Age dating
+Atmospheric effects
+
+2.4 Internal Structure
+2.4.1 Core
+
+Radius: ~3,000 km
+State: Liquid
+Composition: Iron-nickel
+Magnetic field: Very weak
+
+2.4.2 Mantle
+
+Thickness: ~3,000 km
+Composition: Silicate rocks
+Convection patterns
+Heat transfer
+
+2.4.3 Crust
+
+Thickness: 15-22 km
+Composition: Basaltic
+Tectonic activity
+Deformation patterns
