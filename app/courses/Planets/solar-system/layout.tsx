@@ -8,7 +8,9 @@ export default function PlanetLayout({
 }) {
   return (
     <div className="flex h-screen">
-      <Sidebar />
+      <Sidebar selectedPlanet={''} onPlanetSelect={function (planet: string): void {
+        throw new Error('Function not implemented.');
+      } } />
       <div className="flex-1">
         {children}
       </div>
