@@ -90,7 +90,7 @@ const ModelViewer = ({ selectedPlanet, onClose }: { selectedPlanet: string; onCl
       <div className="flex-1 relative h-full">
         <div ref={mountRef} className="w-full h-full aspect-square" />
       </div>
-      <button onClick={onClose} className="absolute top-2 right-[-80px] text-gray-300 rounded-full p-2 z-10">
+      <button onClick={onClose} className="absolute top-2 right-[2px] text-gray-300 rounded-full p-2 z-10">
         <FaTimes className="w-3 h-3" />
       </button>
       <div className="w-1/2 border-l border-gray-600">

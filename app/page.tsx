@@ -51,7 +51,7 @@ export default function Home() {
               <SolarSystemModel />
               {selectedPlanet && (
                 <div>
-                  <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-gray-200 rounded-lg shadow-lg z-50">
+                  <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[65%] h-[85%] bg-gray-200 rounded-lg shadow-lg z-50">
                     <ModelViewer 
                       selectedPlanet={selectedPlanet} 
                       onClose={() => setSelectedPlanet(null)} 

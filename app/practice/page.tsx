@@ -1,167 +1,3 @@
-// "use client";
-
-// import React, { useState } from 'react';
-// import { Card } from '../ui/card';
-// import { ChevronRight, Monitor, BookOpen } from 'lucide-react';
-// import { JSX } from 'react/jsx-runtime';
-// import NavBar from '../components/nav-bar';
-
-// type ModeType = 'mcq' | 'flashcards' | null;
-// type DifficultyType = 'basic' | 'intermediate' | 'advanced' | null;
-
-// interface Mode {
-//   id: 'mcq' | 'flashcards';
-//   title: string;
-//   description: string;
-//   icon: JSX.Element;
-// }
-
-// interface Difficulty {
-//   id: 'basic' | 'intermediate' | 'advanced';
-//   title: string;
-//   color: string;
-// }
-
-// interface Flashcard {
-//   question: string;
-//   answer: string;
-// }
-
-// const PracticePage = () => {
-//   const [selectedMode, setSelectedMode] = useState<ModeType>(null);
-//   const [difficulty, setDifficulty] = useState<DifficultyType>(null);
-//   const [currentCard, setCurrentCard] = useState(0);
-//   const [isFlipped, setIsFlipped] = useState(false);
-
-//   const modes: Mode[] = [
-//     {
-//       id: 'mcq',
-//       title: "Multiple Choice Questions",
-//       description: "Test your knowledge with interactive quizzes",
-//       icon: <Monitor className="w-12 h-12" />,
-//     },
-//     {
-//       id: 'flashcards',
-//       title: "Flash Cards",
-//       description: "Learn and memorize with interactive flashcards",
-//       icon: <BookOpen className="w-12 h-12" />,
-//     }
-//   ];
-
-//   const difficulties: Difficulty[] = [
-//     { id: 'basic', title: 'Basic', color: 'bg-green-500' },
-//     { id: 'intermediate', title: 'Intermediate', color: 'bg-yellow-500' },
-//     { id: 'advanced', title: 'Advanced', color: 'bg-red-500' }
-//   ];
-
-//   const flashcards: Flashcard[] = [
-//     { question: "What is the closest planet to the Sun?", answer: "Mercury" },
-//     { question: "Which planet is known as the Red Planet?", answer: "Mars" }
-//   ];
-
-//   const handleCardSwipe = () => {
-//     setIsFlipped(false);
-//     setTimeout(() => {
-//       setCurrentCard((prev) => (prev + 1) % flashcards.length);
-//     }, 300);
-//   };
-
-//   return (
-//       <div className="min-h-screen bg-gradient-to-b from-black to-blue-950 text-white p-8">
-//            <NavBar/>
-//       <div className="max-w-6xl mx-auto">
-//         <div className="text-center mb-12">
-//           <h1 className="text-4xl font-bold mb-4">Practice & Learn</h1>
-//           <p className="text-xl text-gray-300">Choose your learning style</p>
-//         </div>
-
-//         {!selectedMode && (
-//           <div className="grid md:grid-cols-2 gap-6">
-//             {modes.map((mode) => (
-//               <Card
-//                 key={mode.id}
-//                 className="bg-blue-900/30 p-6 rounded-lg backdrop-blur-sm hover:bg-blue-800/30 transition-all transform hover:scale-105 cursor-pointer"
-//                 onClick={() => setSelectedMode(mode.id)}
-//               >
-//                 <div className="flex items-center mb-4">
-//                   <div className="text-blue-400 mr-4">{mode.icon}</div>
-//                   <div>
-//                     <h3 className="text-xl font-semibold">{mode.title}</h3>
-//                   </div>
-//                 </div>
-//                 <p className="text-gray-300">{mode.description}</p>
-//               </Card>
-//             ))}
-//           </div>
-//         )}
-
-//         {selectedMode === 'mcq' && !difficulty && (
-//           <div className="space-y-4">
-//             <button
-//               className="text-blue-400 mb-4 flex items-center"
-//               onClick={() => setSelectedMode(null)}
-//             >
-//               <ChevronRight className="w-4 h-4 mr-2" /> Back
-//             </button>
-//             <h2 className="text-2xl font-bold mb-6">Select Difficulty Level</h2>
-//             <div className="grid md:grid-cols-3 gap-4">
-//               {difficulties.map((diff) => (
-//                 <Card
-//                   key={diff.id}
-//                   className={`p-6 rounded-lg cursor-pointer transform transition-all hover:scale-105 ${diff.color}/20 hover:${diff.color}/30`}
-//                   onClick={() => setDifficulty(diff.id)}
-//                 >
-//                   <h3 className="text-xl font-bold">{diff.title}</h3>
-//                 </Card>
-//               ))}
-//             </div>
-//           </div>
-//         )}
-
-//         {selectedMode === 'flashcards' && (
-//           <div className="flex flex-col items-center">
-//             <button
-//               className="text-blue-400 mb-4 self-start flex items-center"
-//               onClick={() => setSelectedMode(null)}
-//             >
-//               <ChevronRight className="w-4 h-4 mr-2" /> Back
-//             </button>
-//             <div
-//               className={`w-96 h-64 bg-blue-900/30 rounded-xl p-6 cursor-pointer transform transition-all duration-300 perspective-1000 ${isFlipped ? 'rotate-y-180' : ''}`}
-//               onClick={() => setIsFlipped(!isFlipped)}
-//             >
-//               <div className="relative w-full h-full">
-//                 <div className={`absolute w-full h-full backface-hidden transition-all duration-300 ${isFlipped ? 'opacity-0' : 'opacity-100'}`}>
-//                   <div className="flex items-center justify-center h-full text-xl">
-//                     {flashcards[currentCard].question}
-//                   </div>
-//                 </div>
-//                 <div className={`absolute w-full h-full backface-hidden transition-all duration-300 rotate-y-180 ${isFlipped ? 'opacity-100' : 'opacity-0'}`}>
-//                   <div className="flex items-center justify-center h-full text-xl">
-//                     {flashcards[currentCard].answer}
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//             <button
-//               className="mt-6 px-6 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
-//               onClick={handleCardSwipe}
-//             >
-//               Next Card
-//             </button>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PracticePage;
-
-
-
-
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -169,32 +5,35 @@ import { Card } from '../ui/card';
 import { ChevronRight, Monitor, BookOpen, Star, Users, Trophy } from 'lucide-react';
 import { JSX } from 'react/jsx-runtime';
 import NavBar from '../components/nav-bar';
+import { getCompletedCoursesWithData } from '../db';
+import { useUser } from '@clerk/nextjs';
+
 // Inline TypewriterEffect component to avoid import issues
-const TypewriterEffect = ({ texts, speed = 50, delay = 2000 }) => {
+const TypewriterEffect = ({ texts = [], speed = 50, delay = 2000 }: { texts: string[], speed?: number, delay?: number }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < texts[currentTextIndex].length) {
-          setCurrentText(texts[currentTextIndex].slice(0, currentText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), delay);
-        }
-      } else {
-        if (currentText.length === 0) {
-          setIsDeleting(false);
-          setCurrentTextIndex((current) => (current + 1) % texts.length);
-        } else {
-          setCurrentText(currentText.slice(0, currentText.length - 1));
-        }
-      }
-    }, speed);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     if (!isDeleting) {
+  //       if (currentText.length < texts[currentTextIndex].length) {
+  //         setCurrentText(texts[currentTextIndex].slice(0, currentText.length + 1));
+  //       } else {
+  //         setTimeout(() => setIsDeleting(true), delay);
+  //       }
+  //     } else {
+  //       if (currentText.length === 0) {
+  //         setIsDeleting(false);
+  //         setCurrentTextIndex((current) => (current + 1) % texts.length);
+  //       } else {
+  //         setCurrentText(currentText.slice(0, currentText.length - 1));
+  //       }
+  //     }
+  //   }, speed);
 
-    return () => clearTimeout(timeout);
-  }, [currentText, currentTextIndex, isDeleting, texts, speed, delay]);
+  //   return () => clearTimeout(timeout);
+  // }, [currentText, currentTextIndex, isDeleting, texts, speed, delay]);
 
   return (
     <span className="text-blue-400">
@@ -230,6 +69,9 @@ const PracticePage = () => {
   const [difficulty, setDifficulty] = useState<DifficultyType>(null);
   const [currentCard, setCurrentCard] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [courseData, setCourseData] = useState<any>(null);
+
+  const { user } = useUser();
 
   const typingTexts = [
     "Ready to test your knowledge?",
@@ -281,53 +123,77 @@ const PracticePage = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [QuizData, setQuizData] = useState<any>(null);
+  
 
-const basicQuestions  = [
-    {
-      question: "What is the main purpose of a rocket's launch escape system?",
-      options: [
-        "To safely separate crew from rocket during emergencies",
-        "To make the rocket go faster",
-        "To store extra fuel",
-        "To communicate with Earth"
-      ],
-      correctAnswer: 0,
-      explanation: "The launch escape system is like a safety belt for astronauts - it pulls the crew capsule away from the rocket if something goes wrong during launch."
-    },
-    {
-      question: "Which planet is known as the 'Red Planet'?",
-      options: [
-        "Venus",
-        "Mars",
-        "Jupiter",
-        "Saturn"
-      ],
-      correctAnswer: 1,
-      explanation: "Mars is called the Red Planet because its surface contains lots of iron oxide (rust), which gives it a reddish color that we can see from Earth!"
-    },
-    {
-      question: "What does ISS stand for?",
-      options: [
-        "International Space Station",
-        "Interplanetary Space System",
-        "Internal Space Service",
-        "International Star Station"
-      ],
-      correctAnswer: 0,
-      explanation: "The ISS (International Space Station) is like a giant space house where astronauts from different countries live and work together while orbiting Earth."
-    },
-    {
-      question: "Which of these is NOT a type of space telescope?",
-      options: [
-        "Radio telescope",
-        "X-ray telescope",
-        "Optical telescope",
-        "Sonic telescope"
-      ],
-      correctAnswer: 3,
-      explanation: "Sonic telescope isn't real - sound can't travel in space! We use radio, X-ray, and optical telescopes to study different types of light and radiation from space."
-    }
-  ];
+  const fetchQuizData = async () => {
+    const response = await fetch('/api/flash-card', {
+      method: 'POST', 
+      headers: {
+
+        'Content-Type': 'application/json'
+      },
+    body: JSON.stringify({ message: "Generate MCQs for the following planet: " + "Mercury" }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+  setQuizData(data);
+  };
+
+  useEffect(() => {
+    fetchQuizData();
+  }, []);
+
+
+
+
+const basicQuestions =  [
+  {
+    "question": "What is Mercury's closest distance to the Sun?",
+    "options": [
+      "57.91 million kilometers",
+      "108.2 million kilometers", 
+      "227.9 million kilometers",
+      "384,400 kilometers"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Mercury's closest distance to the Sun, known as perihelion, is 57.91 million kilometers, which is much closer than Earth's average distance."
+  },
+  {
+    "question": "What is the length of a day on Mercury?",
+    "options": [
+      "58.6 Earth days",
+      "24 hours",
+      "365 days", 
+      "88 Earth days"
+    ],
+    "correctAnswer": 0,
+    "explanation": "A day on Mercury, from one sunrise to the next, lasts 58.6 Earth days, much longer than an Earth day."
+  },
+  {
+    "question": "What is the primary component of Mercury's atmosphere?",
+    "options": [
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide",
+      "It has no significant atmosphere"
+    ],
+    "correctAnswer": 3,
+    "explanation": "Mercury has no significant atmosphere, as it is too small and lacks the gravity to retain one."
+  },
+  {
+    "question": "What is Mercury's surface gravity compared to Earth's?",
+    "options": [
+      "It is about 0.38 times Earth's gravity",
+      "It is about the same as Earth's gravity",
+      "It is about 1.5 times Earth's gravity",
+      "It is about 3 times Earth's gravity"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Mercury's surface gravity is about 0.38 times that of Earth's, which is less than the gravity we experience here."
+  }
+];
 
   const handleAnswerSubmit = (selectedOption: number) => {
     if (selectedOption === basicQuestions[currentQuestion].correctAnswer) {
@@ -360,10 +226,11 @@ const basicQuestions  = [
       <div className="min-h-screen bg-gradient-to-b from-black to-blue-950 text-white p-8">
           <NavBar />
           
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mt-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Practice & Learn</h1>
           <div className="h-8 mb-4">
+
             <TypewriterEffect texts={typingTexts} speed={70} delay={2000} />
           </div>
           <p className="text-xl text-gray-300 mb-8">Choose your learning style and boost your understanding!</p>
@@ -454,11 +321,12 @@ const basicQuestions  = [
               <div className="mb-8">
                 <h2 className="text-2xl font-bold mb-6">{basicQuestions[currentQuestion].question}</h2>
                 <div className="space-y-4">
-                  {basicQuestions[currentQuestion].options.map((option, index) => (
+                  {basicQuestions[currentQuestion].options.map((option: string, index: number) => (
                     <button
                       key={index}
                       className="w-full text-left p-4 rounded bg-blue-800/30 hover:bg-blue-700/30 transition-colors"
                       onClick={() => handleAnswerSubmit(index)}
+
                     >
                       {option}
                     </button>

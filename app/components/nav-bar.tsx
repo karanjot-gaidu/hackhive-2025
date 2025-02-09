@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/logo.png"
+import logo from "@/public/image.png"
 
 export default function NavBar() {
   return (
@@ -8,7 +8,7 @@ export default function NavBar() {
         <div className="flex items-center w-full justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-            <Image src={logo} alt="logo" width={60} height={60} />
+            <Image src={logo} alt="logo" width={120} height={120} />
             </Link>
 
 

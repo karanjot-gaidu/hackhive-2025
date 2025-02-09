@@ -80,6 +80,11 @@ export async function markCourseCompleted(user_id: string, course_name: string) 
 }
 
 export async function getCompletedCoursesWithData(user_id: string) {
+    const userRecord = await sql`
+        SELECT id FROM users WHERE user_id = ${user_id}
+    `;
+    const userId = userRecord.rows[0].id;
+
     const result = await sql`
         SELECT 
             c.name,
@@ -87,7 +92,7 @@ export async function getCompletedCoursesWithData(user_id: string) {
             uc.completed_at
         FROM user_courses uc
         JOIN courses c ON uc.course_id = c.id 
-        WHERE uc.user_id = ${user_id}
+        WHERE uc.user_id = ${userId}
         AND uc.is_completed = TRUE
         ORDER BY uc.completed_at DESC;
     `;
