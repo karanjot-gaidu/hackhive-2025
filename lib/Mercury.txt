@@ -1,3 +1,61 @@
+Chapter 5: MERCURY
+1.1 Physical Properties and Orbital Dynamics
+1.1.1 Basic Physical Properties
+Mass: 3.3011 × 10²³ kg
+Volume: 6.083 × 10¹⁰ km³
+Equatorial radius: 2,439.7 km
+Polar radius: 2,439.7 km
+Surface gravity: 3.7 m/s²
+Escape velocity: 4.25 km/s
+Moment of inertia factor: 0.346
+Surface pressure: ≈0 (negligible)
+1.1.2 Orbital Characteristics
+Semi-major axis: 57,909,050 km
+Orbital period: 87.969 days
+Average orbital speed: 47.36 km/s
+Mean anomaly: 174.796°
+Orbital inclination: 7.005°
+Longitude of ascending node: 48.331°
+Argument of perihelion: 29.124°
+1.2 Atmospheric Science
+1.2.1 Composition
+Oxygen (O₂): 42%
+Sodium (Na): 29%
+Hydrogen (H₂): 22%
+Helium (He): 6%
+Potassium (K): 0.5%
+Other trace elements: 0.5%
+1.2.2 Atmospheric Structure
+Exosphere only (no defined layers)
+Highly variable composition
+Surface-bound particles
+Solar wind interaction
+1.3 Surface Features
+1.3.1 Major Terrain Types
+Plains: Smooth plains from volcanic activity
+Craters: Heavily cratered terrain
+Scarps: Lobate scarps from cooling
+Impact Basins: Caloris Basin (largest feature)
+1.3.2 Impact Features
+Crater distribution across surface
+Evidence of recent impact activity
+1.4 Internal Structure
+1.4.1 Core
+Radius: ~2,000 km
+State: Partially liquid
+Magnetic field: Weak but present
+Thickness: ~2,000 km
+Composition: Iron
+1.4.2 Mantle
+State: Solid
+Magnetic field: Minimal influence
+Thickness: ~400 km
+Composition: Silicate rock
+1.4.3 Crust
+State: Heavily cratered
+Magnetic field: Local variations
+Thickness: 100-300 km
+Composition: Silicate rock
 Chapter 6: URANUS
 1.1 Physical Properties and Orbital Dynamics
 1.1.1 Basic Physical Properties
