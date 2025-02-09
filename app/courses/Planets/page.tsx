@@ -14,20 +14,31 @@ export default function PlanetsPage() {
   };
 
   return (
-    <div className="flex h-screen background-image absolute inset-0 bg-cover bg-center" 
-         style={{ backgroundImage: "url('/space.jpg')" }}>
-      <Sidebar 
-        selectedPlanet={selectedPlanet} 
-        onPlanetSelect={handlePlanetSelect}
+    <div className="fixed inset-0 flex">
+      {/* Background with fixed position */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center -z-10" 
+        style={{ 
+          backgroundImage: "url('/space.jpg')",
+          backgroundRepeat: 'repeat'
+        }} 
       />
-      
-      {/* Planet Information Side */}
-      <div className="flex-1">
+
+      {/* Sidebar - Fixed */}
+      <div className="w-1/4 h-full fixed left-0">
+        <Sidebar 
+          selectedPlanet={selectedPlanet} 
+          onPlanetSelect={handlePlanetSelect}
+        />
+      </div>
+
+      {/* Planet Information Side - Scrollable */}
+      <div className="flex-1 h-screen overflow-y-auto ml-[18%] p-4">
         <PlanetInfo planet={selectedPlanet} />
       </div>
 
-      {/* AI Chat Side */}
-      <div className="w-1/3 border-l border-gray-200 p-4">
+      {/* AI Chat - Fixed */}
+      <div className="w-1/3 h-full fixed right-0 border-l border-gray-200 p-4">
         <Card className="h-full flex flex-col">
           <div className="p-4 border-b">
             <h3 className="text-xl font-bold">AI Chat</h3>
