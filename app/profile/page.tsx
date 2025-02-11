@@ -3,10 +3,12 @@ import { useUser } from "@clerk/nextjs";
 import { clerkClient } from "@clerk/nextjs/dist/types/server";
 import { useState } from "react";
 import NavBar from "../components/nav-bar";
+import { useClerk } from "@clerk/nextjs";
 
 export default function ProfilePage() {
   const { user, isLoaded, isSignedIn } = useUser();
   const [isEditing, setIsEditing] = useState(false);
+  const { signOut } = useClerk();
 
   if (!user) return null;
 
@@ -40,6 +42,10 @@ export default function ProfilePage() {
         alert(`There was an error updating the ${type}.`);
       }
     }
+  };
+
+  const handleLogout = async () => {
+    await signOut();
   };
 
   if (!isLoaded || !isSignedIn) return <div>Loading...</div>;
@@ -108,6 +114,15 @@ export default function ProfilePage() {
                   className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200"
                 >
                   Change Password
+                </button>
+              </div>
+
+              <div className="pt-4">
+                <button
+                  onClick={handleLogout}
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200"
+                >
+                  Logout
                 </button>
               </div>
             </div>
