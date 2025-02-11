@@ -42,7 +42,7 @@ export default function Home() {
         <div className="text-center">
             <div className="flex flex-col justify-center items-center min-h-screen relative z-10">
               <h1 className="text-2xl font-semibold text-white text-center mb-4 relative top-20">
-                Welcome, {user?.fullName}!
+                {isSignedIn ? `Welcome, ${user?.fullName}!` : "Welcome to AstroLearn.AI!"}
               </h1>
               <div className="absolute top-[300px] left-[100px]">
                 <Search setSelectedPlanet={setSelectedPlanet} />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { format } from "date-fns";
 
 interface Message {
@@ -12,29 +12,35 @@ const AiChat = ({ selectedPlanet }: { selectedPlanet: string }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const chatEndRef = useRef<HTMLDivElement | null>(null); // Reference to scroll to the bottom
 
-  // Load messages from localStorage on component mount
+  // Load messages from localStorage on component mount or planet change
   useEffect(() => {
-    const savedMessages = localStorage.getItem("chatMessages");
+    const savedMessages = localStorage.getItem(`chatMessages-${selectedPlanet}`);
     if (savedMessages) {
       setMessages(JSON.parse(savedMessages));
     } else {
       // Initialize with a welcome message if no previous messages exist
       const welcomeMessage: Message = {
         id: Date.now().toString(),
-        text: `Welcome! Ask me anything about ${selectedPlanet} or space!`,
+        text: `Welcome! Ask me anything about ${selectedPlanet}!`,
         sender: "ai",
         timestamp: new Date().toISOString(),
       };
       setMessages([welcomeMessage]);
     }
-  }, [selectedPlanet]); // Run when component mounts or selectedPlanet changes
+  }, [selectedPlanet]);
 
   // Save messages to localStorage whenever they change
   useEffect(() => {
     if (messages.length > 0) {
-      localStorage.setItem("chatMessages", JSON.stringify(messages));
+      localStorage.setItem(`chatMessages-${selectedPlanet}`, JSON.stringify(messages));
     }
+  }, [messages, selectedPlanet]);
+
+  // Scroll to the bottom when messages change
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -80,12 +86,25 @@ const AiChat = ({ selectedPlanet }: { selectedPlanet: string }) => {
     }
   };
 
+  const handleClearHistory = () => {
+    // Clear messages from both state and localStorage
+    localStorage.removeItem(`chatMessages-${selectedPlanet}`);
+    setMessages([]);
+  };
+
   return (
     <div className="flex flex-col h-full rounded-lg overflow-hidden">
-      <h3 className="text-xl font-bold text-white p-4 border-b border-gray-600">AI Chat</h3>
+      <h3 className="text-xl font-bold text-white p-4 border-b border-gray-600 flex justify-start items-center">
+        AI Chat
+        <button
+          onClick={handleClearHistory}
+          className="text-sm text-red-500 hover:text-red-700 ml-4 mt-1"
+        >
+          Clear History
+        </button>
+      </h3>
       {/* Chat Messages Display */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-
+      <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ scrollbarWidth: 'none' }}>
         {messages.map((message) => (
           <div
             key={message.id}
@@ -118,6 +137,9 @@ const AiChat = ({ selectedPlanet }: { selectedPlanet: string }) => {
             </div>
           </div>
         )}
+
+        {/* Scroll to the end of the chat */}
+        <div ref={chatEndRef}></div>
       </div>
 
       {/* Chat Input */}
