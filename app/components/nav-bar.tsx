@@ -27,8 +27,8 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="h-14 flex items-center px-6 shadow-md fixed top-0 left-0 right-0 z-50">
-      <div className="flex items-center w-full justify-between">
+    <nav className="h-14 flex items-center-md px-6 fixed top-0 left-0 right-0 z-50">
+      <div className="flex items-center w-full justify-between" style={{ backgroundImage: 'url(/space.jpg)' }}>
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image src={logo} alt="logo" width={120} height={120} />
