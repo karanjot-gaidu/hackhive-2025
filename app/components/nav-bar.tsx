@@ -39,7 +39,7 @@ export default function NavBar() {
           <li>
             <button
               onClick={() => router.push("/")}
-              className="hover:underline hover:scale-110 transition-all duration-300"
+              className="hover:font-bold hover:scale-110 transition-all duration-300"
             >
               Home
             </button>
@@ -47,7 +47,7 @@ export default function NavBar() {
           <li>
             <button
               onClick={handleCoursesSignIn}
-              className="hover:underline hover:scale-110 transition-all duration-300"
+              className="hover:font-bold hover:scale-110 transition-all duration-300"
             >
               Courses
             </button>
@@ -55,7 +55,7 @@ export default function NavBar() {
           <li>
             <button
               onClick={handlePracticeSignIn}
-              className="hover:underline hover:scale-110 transition-all duration-300"
+              className="hover:font-bold hover:scale-110 transition-all duration-300"
             >
               Practice
             </button>
@@ -63,7 +63,7 @@ export default function NavBar() {
           <li>
             <button
               onClick={() => router.push("/about")}
-              className="hover:underline hover:scale-110 transition-all duration-300"
+              className="hover:font-bold hover:scale-110 transition-all duration-300"
             >
               About
             </button>
@@ -71,7 +71,7 @@ export default function NavBar() {
           <li>
             <button
               onClick={() => router.push("/profile")}
-              className="hover:underline hover:scale-110 transition-all duration-300"
+              className="hover:font-bold hover:scale-110 transition-all duration-300"
             >
               Profile
             </button>

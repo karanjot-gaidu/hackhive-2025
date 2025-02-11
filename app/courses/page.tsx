@@ -12,19 +12,26 @@ const CourseCard = ({
   description: string; 
   links: { text: string; href: string; }[] 
 }) => (
-  <Card className="p-6 space-y-4 shadow-lg rounded-lg bg-gray-800">
-    <h3 className="text-2xl font-bold text-white">{title}</h3>
-    <p className="text-gray-300">{description}</p>
-    <div className="space-y-2">
-      {links.map((link, index) => (
-        <Link
-          key={index}
-          href={link.href}
-          className="block w-full text-center py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-        >
-          {link.text}
-        </Link>
-      ))}
+  <Card className="p-6 space-y-4 shadow-lg rounded-lg bg-gray-800 min-h-[300px] flex flex-col">
+    <div className="flex flex-col flex-grow">
+      {/* This first div will take the top space */}
+      <div className="mb-4">
+        <h3 className="text-2xl font-bold text-white">{title}</h3>
+        <p className="text-gray-300">{description}</p>
+      </div>
+
+      {/* This second div will take the bottom space */}
+      <div className="space-y-2 mt-auto">
+        {links.map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            className="block w-full text-center py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+          >
+            {link.text}
+          </Link>
+        ))}
+      </div>
     </div>
   </Card>
 );
@@ -37,7 +44,6 @@ export default function CoursesPage() {
       links: [
         { text: "Start", href: "/courses/planets" },
         { text: "Resume", href: "/courses/planets/basics" },
-        { text: "Start-From-Scratch", href: "/courses/planets/interactive" }
       ]
     },
     {
@@ -59,23 +65,25 @@ export default function CoursesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <NavBar/>
-      <div className="max-w-7xl mt-10 mx-auto">
-        <h1 className="text-4xl font-bold text-center text-white mb-12">
-          Space Science Courses
-        </h1>
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/space.jpg')" }}>
+        <NavBar/>
+        <div className="max-w-7xl mx-auto mt-20">
+          <h1 className="text-4xl font-bold text-center text-white mb-12">
+            Space Science Courses
+          </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course, index) => (
-            <div key={index} className="hover:scale-105 transition-all duration-300">
-              <CourseCard
-                title={course.title}
-                description={course.description}
-                links={course.links}
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {courses.map((course, index) => (
+              <div key={index} className="hover:scale-105 transition-all duration-300">
+                <CourseCard
+                  title={course.title}
+                  description={course.description}
+                  links={course.links}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
