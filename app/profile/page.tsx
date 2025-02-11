@@ -8,7 +8,7 @@ import LoginPage from "../components/login-page";
 export default function ProfilePage() {
   const { user, isLoaded, isSignedIn } = useUser();
   const [isUploading, setIsUploading] = useState(false);
-  const { signOut } = useClerk();
+  const { signOut, openSignIn } = useClerk();
 
   if (!isLoaded) return <div>Loading...</div>;
 
@@ -29,6 +29,34 @@ export default function ProfilePage() {
     }
   };
 
+  const handleNameChange = async (field: string, value: string) => {
+    const newName = prompt("Enter new name:");
+    if (newName) {
+      try {
+        await user?.update({ [field]: newName });
+        alert("Name updated!");
+      } catch (error) {
+        console.error("Name update failed:", error);
+        alert("Failed to update name. Try again.");
+      }
+    }
+  };
+
+  const handlePasswordChange = async () => {
+    const email = user?.primaryEmailAddress?.emailAddress;
+    const currentPassword = prompt("Enter current password:");
+    const newPassword = prompt("Enter new password:");
+    if (email && currentPassword && newPassword) {
+      try {
+        user?.updatePassword({ newPassword, currentPassword })
+        alert("Password updated!");
+      } catch (error) {
+        console.error("Password reset failed:", error);
+        alert("Failed to send password reset email. Try again.");
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen relative">
       <NavBar />
@@ -46,8 +74,8 @@ export default function ProfilePage() {
             <div className="flex flex-col items-center space-y-6">
               {/* Profile Image */}
               <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-white">
-                <img src={user.imageUrl} alt="Profile" className="w-full h-full object-cover" />
-                <label className="absolute bottom-0 bg-black bg-opacity-60 text-white text-sm px-2 py-1 cursor-pointer w-full text-center">
+                <label className="cursor-pointer">
+                  <img src={user.imageUrl} alt="Profile" className="w-full h-full object-cover" />
                   <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
                 </label>
               </div>
@@ -59,6 +87,7 @@ export default function ProfilePage() {
                     <p className="text-sm text-gray-300">First Name</p>
                     <p className="font-semibold">{user.firstName}</p>
                   </div>
+                  <button onClick={() => handleNameChange("firstName", user.firstName ?? "")} className="text-sm text-gray-300 hover:text-gray-100">Edit</button>
                 </div>
 
                 <div className="flex justify-between items-center">
@@ -66,6 +95,7 @@ export default function ProfilePage() {
                     <p className="text-sm text-gray-300">Last Name</p>
                     <p className="font-semibold">{user.lastName}</p>
                   </div>
+                  <button onClick={() => handleNameChange("lastName", user.lastName ?? "")} className="text-sm text-gray-300 hover:text-gray-100">Edit</button>
                 </div>
 
                 <div className="flex justify-between items-center">
@@ -73,6 +103,15 @@ export default function ProfilePage() {
                     <p className="text-sm text-gray-300">Email</p>
                     <p className="font-semibold">{user.primaryEmailAddress?.emailAddress}</p>
                   </div>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    onClick={handlePasswordChange}
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200"
+                  >
+                    Change Password
+                  </button>
                 </div>
 
                 <div className="pt-4">
