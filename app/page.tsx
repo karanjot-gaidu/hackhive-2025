@@ -40,7 +40,6 @@ export default function Home() {
         
       <div className="flex justify-center items-center min-h-screen relative z-10">
         <div className="text-center">
-          {isSignedIn ? (
             <div className="flex flex-col justify-center items-center min-h-screen relative z-10">
               <h1 className="text-2xl font-semibold text-white text-center mb-4 relative top-20">
                 Welcome, {user?.fullName}!
@@ -60,9 +59,7 @@ export default function Home() {
                 </div>
               )}
             </div>
-          ) : (
-            <LoginPage />
-          )}
+          )
         </div>
       </div>
     </div>
