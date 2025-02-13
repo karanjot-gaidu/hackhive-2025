@@ -108,14 +108,14 @@ export default function ProfilePage() {
                 <div className="pt-4">
                   <button
                     onClick={handlePasswordChange}
-                    className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200"
+                    className="w-full bg-black hover:bg-gray-800 text-white py-2 rounded-lg transition duration-200 border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                   >
                     Change Password
                   </button>
                 </div>
 
-                <div className="pt-4">
-                  <button onClick={() => signOut()} className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200">
+                <div>
+                  <button onClick={() => signOut()} className="w-full bg-black hover:bg-gray-800 text-white py-2 rounded-lg transition duration-200 border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                     Logout
                   </button>
                 </div>

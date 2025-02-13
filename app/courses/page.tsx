@@ -12,7 +12,7 @@ const CourseCard = ({
   description: string; 
   links: { text: string; href: string; }[] 
 }) => (
-  <Card className="flex flex-col bg-blue-900/30 p-6 rounded-lg backdrop-blur-sm hover:bg-blue-800/30 transition-colors">
+  <Card className="flex flex-col p-6 rounded-lg backdrop-blur-sm border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)] text-center">
     <div className="flex flex-col flex-grow">
       {/* This first div will take the top space */}
       <div className="mb-4">
@@ -26,7 +26,7 @@ const CourseCard = ({
           <Link
             key={index}
             href={link.href}
-            className="block w-full text-center py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="block w-full border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-300 px-6 py-2 rounded-lg font-semibold text-white hover:bg-gray-800"
           >
             {link.text}
           </Link>

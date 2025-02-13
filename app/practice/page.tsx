@@ -210,7 +210,7 @@ const PracticePage = () => {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-blue-900/30 p-4 rounded-lg backdrop-blur-sm transform hover:scale-105 transition-all"
+                  className="flex flex-col p-4 rounded-lg backdrop-blur-sm border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)] text-center transition-all duration-300 hover:scale-105"
                 >
                   <div className="flex justify-center mb-2">{stat.icon}</div>
                   <div className="text-2xl font-bold mb-1">{stat.value}</div>
@@ -227,17 +227,17 @@ const PracticePage = () => {
             {modes.map((mode) => (
               <Card
                 key={mode.id}
-                className="bg-blue-900/30 p-8 rounded-lg backdrop-blur-sm hover:bg-blue-800/30 transition-all transform hover:scale-105 cursor-pointer"
+                className="flex flex-col p-6 rounded-lg backdrop-blur-sm border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)] text-center transition-all duration-300 hover:scale-105 cursor-pointer"
                 onClick={() => setSelectedMode(mode.id as "mcq" | "flashcards")}
               >
                 <div className="flex items-center mb-6">
-                  <div className="text-blue-400 mr-6">{mode.icon}</div>
+                  <div className="text-white mr-6">{mode.icon}</div>
                   <div>
                     <h3 className="text-2xl font-semibold">{mode.title}</h3>
                   </div>
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed">{mode.description}</p>
-                <div className="mt-6 flex items-center text-blue-400 text-sm">
+                <div className="mt-6 flex items-center text-white text-sm">
                   <span>Get Started</span>
                   <ChevronRight className="w-4 h-4 ml-2" />
                 </div>
@@ -249,7 +249,7 @@ const PracticePage = () => {
         {/* Flashcards or Quiz Mode */}
         {selectedMode === "mcq" && !difficulty && (
           <div className="space-y-4">
-            <button className="text-blue-400 mb-4 flex items-center" onClick={() => setSelectedMode(null)}>
+            <button className="text-white mb-4 flex items-center" onClick={() => setSelectedMode(null)}>
               <ChevronRight className="w-4 h-4 mr-2" /> Back
             </button>
             <h2 className="text-2xl font-bold mb-6">Select Difficulty Level</h2>
@@ -257,7 +257,7 @@ const PracticePage = () => {
               {difficulties.map((diff) => (
                 <Card
                   key={diff.id}
-                  className={`p-6 rounded-lg cursor-pointer transform transition-all hover:scale-105 ${diff.color}/20 hover:${diff.color}/30`}
+                  className="flex flex-col p-6 rounded-lg backdrop-blur-sm border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)] text-center transition-all duration-300 hover:scale-105 cursor-pointer"
                   onClick={() => handleDifficultySelect(diff.id as "basic" | "intermediate" | "advanced")}
                 >
                   <h3 className="text-xl font-bold">{diff.title}</h3>
@@ -269,14 +269,14 @@ const PracticePage = () => {
 
         {selectedMode === "mcq" && difficulty && showQuiz && !showResult && (
           <div className="max-w-3xl mx-auto">
-            <button className="text-blue-400 mb-4 flex items-center" onClick={() => setDifficulty(null)}>
+            <button className="text-white mb-4 flex items-center" onClick={() => setDifficulty(null)}>
               <ChevronRight className="w-4 h-4 mr-2" /> Back to Difficulty Selection
             </button>
 
-            <div className="bg-blue-900/30 p-8 rounded-lg backdrop-blur-sm">
+            <div className="flex flex-col p-8 rounded-lg backdrop-blur-sm border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)] text-center">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-semibold">Question {currentQuestion + 1} of {basicQuestions.length}</h3>
-                <span className="text-blue-400">Score: {score}</span>
+                <span className="text-white">Score: {score}</span>
               </div>
 
               <div className="mb-8">
@@ -285,7 +285,7 @@ const PracticePage = () => {
                   {basicQuestions[currentQuestion].options.map((option: string, index: number) => (
                     <button
                       key={index}
-                      className="w-full text-left p-4 rounded bg-blue-800/30 hover:bg-blue-700/30 transition-colors"
+                      className="w-full text-left p-4 rounded bg-black/30 hover:bg-black/50 transition-colors border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                       onClick={() => handleAnswerSubmit(index)}
                     >
                       {option}
@@ -295,7 +295,7 @@ const PracticePage = () => {
               </div>
 
               {basicQuestions[currentQuestion].explanation && (
-                <div className="mt-6 p-4 bg-blue-800/20 rounded-lg">
+                <div className="mt-6 p-4 bg-black/20 rounded-lg">
                   <p className="text-sm text-gray-300">{basicQuestions[currentQuestion].explanation}</p>
                 </div>
               )}
@@ -305,18 +305,18 @@ const PracticePage = () => {
 
         {showResult && (
           <div className="max-w-3xl mx-auto text-center">
-            <div className="bg-blue-900/30 p-8 rounded-lg backdrop-blur-sm">
+            <div className="bg-black p-8 rounded-lg backdrop-blur-sm border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               <h2 className="text-3xl font-bold mb-4">Quiz Complete!</h2>
               <p className="text-xl mb-6">Your score: {score} out of {basicQuestions.length}</p>
               <div className="space-x-4">
                 <button
-                  className="px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                   onClick={restartQuiz}
                 >
                   Try Again
                 </button>
                 <button
-                  className="px-6 py-3 bg-blue-600/50 rounded-lg hover:bg-blue-700/50 transition-colors"
+                  className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors border border-white shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                   onClick={() => {
                     setDifficulty(null);
                     setShowResult(false);
