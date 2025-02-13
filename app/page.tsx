@@ -7,23 +7,30 @@ import NavBar from "./components/nav-bar"
 import Search from "./components/search"
 import { useState, useEffect } from "react"
 import ModelViewer from "./components/3d-model-viewer"
+import { checkIfUserExists } from "./db"
 
 export default function Home() {
   const { isSignedIn, user } = useUser();
   const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
 
+  
   useEffect(() => {
     const initializeUser = async () => {
       if (isSignedIn && user?.id) {
         try {
-          // Create user and their courses through the API
-          await fetch('/api/user-details', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ user_id: user.id })
-          });
+          // Check if the user already exists in the database
+          const userExists = await checkIfUserExists(user.id);
+          
+          if (!userExists) {
+            // Create user and their courses through the API
+            await fetch('/api/user-details', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ user_id: user.id }),
+            });
+          }
         } catch (error) {
           console.error('Error initializing user:', error);
         }
@@ -31,7 +38,8 @@ export default function Home() {
     };
 
     initializeUser();
-  }, [isSignedIn, user?.id]);
+  }, [isSignedIn, user?.id]); 
+
 
   return (
     <div className="relative min-h-screen">

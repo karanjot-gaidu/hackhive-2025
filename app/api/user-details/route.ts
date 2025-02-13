@@ -4,7 +4,8 @@ import {
     getUserCourses, 
     markCourseCompleted, 
     getCompletedCoursesWithData,
-    checkIfCourseCompleted
+    checkIfCourseCompleted,
+    checkIfUserExists
 } from '@/app/db';
 
 export async function POST(request: Request) {
@@ -36,33 +37,29 @@ export async function GET(request: Request) {
             return new Response('User ID is required', { status: 400 });
         }
 
-        // If course_id is provided, check completion status
-        if (course_id) {
-            try {
-                const isCompleted = await checkIfCourseCompleted(user_id, parseInt(course_id));
-                return new Response(JSON.stringify({ isCompleted }), {
-                    status: 200,
-                    headers: { 'Content-Type': 'application/json' }
-                });
-            } catch (err) {
-                console.error('Error checking course completion:', err);
-                return new Response(JSON.stringify({ error: 'Failed to check course completion' }), {
-                    status: 500,
-                    headers: { 'Content-Type': 'application/json' }
-                });
-            }
+        const userExists = await checkIfUserExists(user_id);
+        if (!userExists) {
+            return new Response('User does not exist', { status: 404 });
         }
 
-        // Get all courses
+        // If only user_id is provided, return a success response without fetching courses
+        if (!course_id) {
+            return new Response(JSON.stringify({ userExists: true }), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+
+        // If course_id is provided, check completion status
         try {
-            const courses = await getUserCourses(user_id);
-            return new Response(JSON.stringify(courses), {
+            const isCompleted = await checkIfCourseCompleted(user_id, parseInt(course_id));
+            return new Response(JSON.stringify({ isCompleted }), {
                 status: 200,
                 headers: { 'Content-Type': 'application/json' }
             });
         } catch (err) {
-            console.error('Error fetching user courses:', err);
-            return new Response(JSON.stringify({ error: 'Failed to fetch user courses' }), {
+            console.error('Error checking course completion:', err);
+            return new Response(JSON.stringify({ error: 'Failed to check course completion' }), {
                 status: 500,
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -75,6 +72,7 @@ export async function GET(request: Request) {
         });
     }
 }
+
 
 export async function PUT(request: Request) {
     try {

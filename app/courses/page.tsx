@@ -12,7 +12,7 @@ const CourseCard = ({
   description: string; 
   links: { text: string; href: string; }[] 
 }) => (
-  <Card className="p-6 space-y-4 shadow-lg rounded-lg bg-gray-800 min-h-[300px] flex flex-col">
+  <Card className="flex flex-col bg-blue-900/30 p-6 rounded-lg backdrop-blur-sm hover:bg-blue-800/30 transition-colors">
     <div className="flex flex-col flex-grow">
       {/* This first div will take the top space */}
       <div className="mb-4">

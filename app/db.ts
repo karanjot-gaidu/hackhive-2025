@@ -31,6 +31,13 @@ export async function createUser(user_id: string) {
     `;
 }
 
+export async function checkIfUserExists(user_id: string) {
+    const result = await sql`
+        SELECT id FROM users WHERE user_id = ${user_id}
+    `;
+    return result.rows.length > 0;
+}
+
 export async function createUserCourses(user_id: string) {
     await sql`
         WITH user_record AS (
