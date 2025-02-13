@@ -19,9 +19,12 @@ export default function Home() {
       if (isSignedIn && user?.id) {
         try {
           // Check if the user already exists in the database
-          const userExists = await checkIfUserExists(user.id);
-          
-          if (!userExists) {
+          const userExists = await fetch(`/api/user-details?user_id=${user.id}`, {
+            method: 'GET',
+          });
+          const data = await userExists.json();
+
+          if (!data) {
             // Create user and their courses through the API
             await fetch('/api/user-details', {
               method: 'POST',

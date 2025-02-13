@@ -5,9 +5,11 @@ import { checkIfCourseCompleted, markCourseCompleted } from "../db";
 interface PlanetInfoProps {
     planet: string;
     className?: string;
+    completedCourses: { name: string; completedAt: string }[];
+    setCompletedCourses: (completedCourses: { name: string; completedAt: string }[]) => void;
 }
 
-export default function PlanetInfo({ planet, className = "" }: PlanetInfoProps) {
+export default function PlanetInfo({ planet, className = "", completedCourses, setCompletedCourses }: PlanetInfoProps) {
     const courses = {
         Mercury: 1,
         Venus: 2,
@@ -23,7 +25,7 @@ export default function PlanetInfo({ planet, className = "" }: PlanetInfoProps) 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const { user } = useUser();
-    const [isCompleted, setIsCompleted] = useState<boolean | null>(null);
+    const [isCompleted, setIsCompleted] = useState(false);
 
     useEffect(() => {
         const checkCompletion = async () => {
@@ -116,7 +118,8 @@ export default function PlanetInfo({ planet, className = "" }: PlanetInfoProps) 
                 },
                 body: JSON.stringify({
                     user_id: user.id,
-                    course_name: planet
+                    course_name: planet,
+                    course_id: courses[planet as keyof typeof courses]
                 })
             });
 
@@ -124,7 +127,10 @@ export default function PlanetInfo({ planet, className = "" }: PlanetInfoProps) 
                 throw new Error('Failed to mark course as completed');
             }
 
-            setIsCompleted(true); // Update UI after marking as completed
+            setIsCompleted(true);
+            // Update the completedCourses array with the new completion
+            const newCompletion: { name: string; completedAt: string } = { name: planet, completedAt: new Date().toISOString() };
+            setCompletedCourses([...completedCourses, newCompletion]);
         } catch (err) {
             console.error(err);
             setError('Error marking course as completed');

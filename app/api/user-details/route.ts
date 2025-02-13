@@ -5,7 +5,8 @@ import {
     markCourseCompleted, 
     getCompletedCoursesWithData,
     checkIfCourseCompleted,
-    checkIfUserExists
+    checkIfUserExists,
+    getCompletedCourses
 } from '@/app/db';
 
 export async function POST(request: Request) {
@@ -100,7 +101,7 @@ export async function PATCH(request: Request) {
             return new Response('User ID is required', { status: 400 });
         }
 
-        const completedCourses = await getCompletedCoursesWithData(user_id);
+        const completedCourses = await getCompletedCourses(user_id);
         return new Response(JSON.stringify(completedCourses), {
             status: 200,
             headers: { 'Content-Type': 'application/json' }

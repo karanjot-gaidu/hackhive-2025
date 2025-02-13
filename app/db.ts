@@ -117,6 +117,23 @@ export async function checkIfCourseCompleted(user_id: string, course_id: number)
     return result.rows[0].is_completed;
 }
 
+export async function getCompletedCourses(user_id: string) {
+    const result = await sql`
+        SELECT c.name, uc.completed_at
+        FROM user_courses uc
+        JOIN courses c ON uc.course_id = c.id
+        JOIN users u ON uc.user_id = u.id
+        WHERE u.user_id = ${user_id} AND uc.is_completed = true
+        ORDER BY uc.completed_at DESC;
+    `;
+    return result.rows;
+}
+
+
+
+
+
+
 
 
 
