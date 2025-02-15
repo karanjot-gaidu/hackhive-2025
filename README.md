@@ -1,6 +1,6 @@
 <div align="center">
     <img src="public/image.png" alt="logo" width="120" height="20">
-    <h1 style="font-size: 24px; font-weight: bold; align-items: center;">ASTROLEARN.AI - Hackhive 2025</h1>
+    <h1 style="font-size: 24px; font-weight: bold; align-items: center;">ASTROLEARN.AI - Hackhive 2025 Top 10</h1>
     <p align="center">An interactive educational platform to explore and learn about the space and solar system. It is built with modern web technologies to provide an engaging learning experience for users of all skill levels.</p>
     <p align="center">
         <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React">
