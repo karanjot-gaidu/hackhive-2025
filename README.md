@@ -30,7 +30,7 @@
 ## 🛠️ Technology Stack
 
 ### Frontend
-- Next.js for robust performance
+- Next.js and React for robust performance
 - Three.js for 3D rendering
 - Tailwind CSS for responsive design
 
